@@ -40,8 +40,17 @@ def forward(revs, speed):
     clicks = int(revs*CLICKS_PER_REV)
     # doesn't matter which side's sensor we use
     s = sensors[SENS_L]
-    s.start(clicks).wait(3)
+    s.start(clicks).wait(5)
 
     # TODO: figure out how many clicks for the motors to stop, and allow for that
-    # in the above loop
+    # in the above loop:
+    # speed, extra clicks
+    # 30, 7-8
+    # 50, 11-12
+    # 70, 13
+    # 100, 13-14
     robohat.stop()
+
+    time.sleep(1)
+    print("final clicks: ", s._sensorClicks)
+
